@@ -6,6 +6,9 @@ use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+
 class TasksController extends Controller
 {
     /**
@@ -15,7 +18,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = DB::table('tasks')->paginate();
+        $tasks = DB::table('tasks')->get();
         return response()->json($tasks);
     }
 
